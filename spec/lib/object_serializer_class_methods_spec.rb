@@ -103,7 +103,7 @@ describe FastJsonapi::ObjectSerializer do
 
       it 'returns correct hash where id is obtained from the method specified via `id_method_name`' do
         expected_award_data = movie.actors.map(&:awards).flatten.map do |actor|
-          { id: actor.imdb_award_id.to_s, type: actor.class.name.downcase.to_sym }
+          { id: actor.imdb_award_id, type: actor.class.name.downcase.to_sym }
         end
         serialized_award_data = hash[:data][:relationships][:awards][:data]
 

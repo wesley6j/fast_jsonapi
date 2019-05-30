@@ -45,15 +45,15 @@ describe FastJsonapi::ObjectSerializer do
 
     it 'returns correct values when relationships_hash is called' do
       relationships_hash = MovieSerializer.relationships_hash(movie)
-      actors_hash = movie.actor_ids.map { |id|  {id: id.to_s, type: :actor} }
-      owner_hash = {id: movie.owner_id.to_s, type: :user}
+      actors_hash = movie.actor_ids.map { |id|  {id: id, type: :actor} }
+      owner_hash = {id: movie.owner_id, type: :user}
       expect(relationships_hash[:actors][:data]).to match_array actors_hash
       expect(relationships_hash[:owner][:data]).to eq owner_hash
     end
 
     it 'returns correct hash when record_hash is called' do
       record_hash = MovieSerializer.send(:record_hash, movie, nil)
-      expect(record_hash[:id]).to eq movie.id.to_s
+      expect(record_hash[:id]).to eq movie.id
       expect(record_hash[:type]).to eq MovieSerializer.record_type
       expect(record_hash).to have_key(:attributes) if MovieSerializer.attributes_to_serialize.present?
       expect(record_hash).to have_key(:relationships) if MovieSerializer.relationships_to_serialize.present?

@@ -415,7 +415,7 @@ RSpec.shared_context 'movie class' do
     actors = []
 
     3.times.each do |id|
-      actors << ActorStruct.new(id, id.to_s, id.to_s, id, [id])
+      actors << ActorStruct.new(id, id, id, id, [id])
     end
 
     m = MovieStruct.new

@@ -67,7 +67,7 @@ describe FastJsonapi::ObjectSerializer do
     it 'returns correct id when serialized_json is called for a single object' do
       json = MovieSerializer.new(movie).serialized_json
       serializable_hash = JSON.parse(json)
-      expect(serializable_hash['data']['id']).to eq movie.id.to_s
+      expect(serializable_hash['data']['id']).to eq movie.id
     end
 
     it 'returns correct json when serializing nil' do
@@ -120,7 +120,7 @@ describe FastJsonapi::ObjectSerializer do
     describe '#as_json' do
       it 'returns a json hash' do
         json_hash = MovieSerializer.new(movie).as_json
-        expect(json_hash['data']['id']).to eq movie.id.to_s
+        expect(json_hash['data']['id']).to eq movie.id
       end
 
       it 'returns multiple records' do

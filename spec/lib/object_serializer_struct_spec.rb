@@ -28,7 +28,7 @@ describe FastJsonapi::ObjectSerializer do
       expect(serializable_hash[:meta]).to be nil
       expect(serializable_hash[:links]).to be nil
       expect(serializable_hash[:included]).to be nil
-      expect(serializable_hash[:data][:id]).to eq movie_struct.id.to_s
+      expect(serializable_hash[:data][:id]).to eq movie_struct.id
     end
 
     context 'struct without id' do

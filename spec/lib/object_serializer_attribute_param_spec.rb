@@ -70,7 +70,7 @@ describe FastJsonapi::ObjectSerializer do
 
         it "handles passing params to a list of resources" do
           param_attribute_values = hash[:data].map { |data| [data[:id], data[:attributes][:viewed]] }
-          expected_values = movies.map { |m| [m.id.to_s, user.viewed.include?(m.id)] }
+          expected_values = movies.map { |m| [m.id, user.viewed.include?(m.id)] }
 
           expect(param_attribute_values).to eq(expected_values)
         end
